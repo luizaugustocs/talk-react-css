@@ -1,0 +1,8 @@
+.titulo {
+    text-align: center;
+    color: green;
+}
+
+.titulo:hover {
+    text-decoration: underline;
+}

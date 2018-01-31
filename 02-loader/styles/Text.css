@@ -1,0 +1,9 @@
+.texto {
+    color: blue;
+    flex: 0 0 50%
+}
+
+.texto:hover {
+    background-color: blue;
+    color: white;
+}
