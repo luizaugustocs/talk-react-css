@@ -1,0 +1,28 @@
+.container {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+}
+
+.container > * {
+    flex: 1 100%;
+}
+
+.titulo {
+    text-align: center;
+    color: green;
+}
+
+.titulo:hover {
+    text-decoration: underline;
+}
+
+.texto {
+    color: blue;
+    flex: 0 0 50%
+}
+
+.texto:hover {
+    background-color: blue;
+    color: white;
+}
