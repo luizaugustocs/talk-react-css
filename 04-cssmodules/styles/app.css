@@ -1,0 +1,9 @@
+.container {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+}
+
+.container > * {
+    flex: 1 100%;
+}
