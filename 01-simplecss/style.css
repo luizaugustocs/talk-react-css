@@ -4,13 +4,10 @@
     justify-content: center;
 }
 
-.container > * {
-    flex: 1 100%;
-}
-
 .titulo {
     text-align: center;
     color: green;
+    flex: 1 100%;
 }
 
 .titulo:hover {

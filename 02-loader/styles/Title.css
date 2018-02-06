@@ -1,6 +1,7 @@
 .titulo {
     text-align: center;
     color: green;
+    flex: 1 100%;
 }
 
 .titulo:hover {

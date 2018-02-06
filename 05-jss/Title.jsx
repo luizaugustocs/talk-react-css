@@ -6,6 +6,7 @@ const styles = (theme) => (
         title: {
             color: theme.title.color,
             'text-align': 'center',
+            'flex': '1 100%',
             '&:hover':{
                 'text-decoration' : (props) => props.hover ? theme.title.hoverTransformation : 'none'
 
