@@ -3,18 +3,7 @@ import Title from './Title.jsx';
 import Text from './Text.jsx';
 import PropTypes from 'prop-types';
 import injectSheet, {ThemeProvider} from 'react-jss';
-
-
-const theme = {
-    title : {
-        hoverTransformation: 'underline',
-        color: 'green'
-    },
-    text: {
-        color: 'blue',
-        hoverColor: 'white'
-    }
-};
+import themes from './themes';
 
 class App extends React.Component {
 
@@ -22,12 +11,29 @@ class App extends React.Component {
         classes: PropTypes.object.isRequired
     };
 
+    constructor(props) {
+        super(props);
+
+        this.state ={
+            hover: true
+        }
+    }
+
+    changeHover = () => {
+        this.setState({hover: !this.state.hover})
+    };
+
     render() {
         return (
                 <div className={this.props.classes.container}>
-                    <Title />
+                    <Title hover={this.state.hover}/>
                     <Text/>
+                    <div style={{flex: '1 100%'}}>
+                        <input type="checkbox" checked={this.state.hover} onChange={this.changeHover}/> Hover
+                    </div>
                 </div>
+
+
         );
     }
 }
@@ -38,15 +44,38 @@ const styles = {
         flexFlow: 'row wrap',
         justifyContent: 'center'
     }
-}
+};
 
 class AppWithThemeProvider extends React.Component {
-    render () {
+
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            themeLabel: 'default',
+            theme: themes.default
+        }
+    }
+
+    onChangeTheme = (event) => {
+        const {value} = event.target;
+        this.setState({theme: themes[value], themeLabel: value})
+    };
+
+    render() {
 
         const AppWithThemeProvider = injectSheet(styles)(App);
         return (
-            <ThemeProvider theme={theme}>
-                <AppWithThemeProvider />
+            <ThemeProvider theme={this.state.theme}>
+                <div>
+                    <AppWithThemeProvider />
+                    <div >
+                        <select value={this.state.themeLabel} onChange={this.onChangeTheme}>
+                            <option value="default">Default</option>
+                            <option value="alternative">Alternative</option>
+                        </select>
+                    </div>
+                </div>
             </ThemeProvider>
         )
     }

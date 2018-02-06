@@ -12,12 +12,27 @@ class App extends React.Component {
         className: PropTypes.string.isRequired
     };
 
+    constructor(props) {
+        super(props);
+
+        this.state ={
+            hover: true
+        }
+    }
+
+    changeHover = () => {
+        this.setState({hover: !this.state.hover})
+    };
+
 
     render() {
         return (
             <div className={this.props.className}>
-                <Title />
+                <Title hover={this.state.hover}/>
                 <Text/>
+                <div style={{flex: '1 100%'}}>
+                    <input type="checkbox" checked={this.state.hover} onChange={this.changeHover}/> Hover
+                </div>
             </div>
         );
     }
